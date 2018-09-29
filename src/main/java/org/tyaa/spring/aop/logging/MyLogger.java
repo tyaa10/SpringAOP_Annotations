@@ -1,6 +1,7 @@
 package org.tyaa.spring.aop.logging;
 
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -54,9 +55,12 @@ public class MyLogger {
 
 		} else if (obj instanceof Map) {
 			Map map = (Map) obj;
-			for (Object object : map.keySet()) {
+			/*for (Object object : map.keySet()) {
 				System.out.println("key=" + object + ", " + map.get(object));
-			}
+			}*/
+			map.entrySet().forEach((entry) -> {
+				System.out.println("key=" + ((Entry<String, Integer>) entry).getKey() + ", " + ((Entry<String, Integer>) entry).getValue());
+			});
 		}
 
 		System.out.println("Print info end <<");
