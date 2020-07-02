@@ -25,9 +25,9 @@ public class MyLogger {
 		System.out.println("method begin: " + joinpoint.getSignature().toShortString() + " >>");
 		Object output = null;
 
-		for (Object object : joinpoint.getArgs()) {
+		/* for (Object object : joinpoint.getArgs()) {
 			System.out.println("Param : " + object);
-		}
+		} */
 
 		try {
 			output = joinpoint.proceed();
@@ -55,9 +55,9 @@ public class MyLogger {
 
 		} else if (obj instanceof Map) {
 			Map map = (Map) obj;
-			/*for (Object object : map.keySet()) {
+			/* for (Object object : map.keySet()) {
 				System.out.println("key=" + object + ", " + map.get(object));
-			}*/
+			} */
 			map.entrySet().forEach((entry) -> {
 				System.out.println("key=" + ((Entry<String, Integer>) entry).getKey() + ", " + ((Entry<String, Integer>) entry).getValue());
 			});
