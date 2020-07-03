@@ -46,7 +46,7 @@ public class MyLogger {
 	public void print(Object obj) {
 
 		System.out.println("Print info begin >>");
-
+		System.out.println(obj.getClass().getName());
 		if (obj instanceof Set) {
 			Set set = (Set) obj;
 			for (Object object : set) {
@@ -58,6 +58,7 @@ public class MyLogger {
 			/* for (Object object : map.keySet()) {
 				System.out.println("key=" + object + ", " + map.get(object));
 			} */
+			System.out.println(map.size());
 			map.entrySet().forEach((entry) -> {
 				System.out.println("key=" + ((Entry<String, Integer>) entry).getKey() + ", " + ((Entry<String, Integer>) entry).getValue());
 			});
