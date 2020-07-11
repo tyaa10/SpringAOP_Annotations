@@ -5,10 +5,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,8 +13,9 @@ import org.springframework.stereotype.Component;
 public class MyLogger {
 
 	@Pointcut("execution(* *(..)) && within(org.tyaa.spring.aop.objects.*)")
+	// @Pointcut("execution(* org.tyaa.spring.aop.objects.FileManager.*(..))")
 	private void allMethods() {
-	};
+	}
 
 	@Around("allMethods()")
 	public Object watchTime(ProceedingJoinPoint joinpoint) {
@@ -69,4 +67,8 @@ public class MyLogger {
 
 	}
 
+	@Before("execution(*.new()) && within(org.tyaa.spring.aop.objects.*)")
+	public void constructorLog(){
+		System.out.println("Before new FileManager()");
+	}
 }

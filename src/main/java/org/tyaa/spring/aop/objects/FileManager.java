@@ -8,10 +8,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
 
 @Component
+@Configurable(preConstruction=true)
 public class FileManager {
+
+	public FileManager(){
+		System.out.println("new FileManager()");
+	}
 
 	public Set<String> getExtensionList(String folder) throws IOException {
 		File dir = new File(folder);
